@@ -1,3 +1,4 @@
+//required packages
 require('dotenv').config();
 const Discord = require('discord.js');
 // require Nuggies package
@@ -9,6 +10,10 @@ const fs = require('fs');
 // login to the bot
 client.login(process.env.BOT_TOKEN);
 
+const keepAlive = require("./server");
+
+
+//notifys console that bot is up and running!
 client.on('ready', () => {
     console.log(`${client.user.tag} is online.`)
 });
@@ -18,6 +23,8 @@ client.on('clickMenu', menu => {
     Nuggies.dropclick(client, menu);
 });
 
+
+//command handler
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
@@ -35,6 +42,8 @@ fs.readdir('./commands/', (err, files) => {
     });
 });
 
+
+//prefix and command handler
 client.on('message', async message => {
     const prefix = '.'
     if (message.author.bot || message.channel.type === 'dm') return;
@@ -69,3 +78,9 @@ client.on('message', async message => {
         }
     }
 });
+
+
+//for bot hosting 
+keepAlive();
+
+
