@@ -40,10 +40,11 @@ module.exports.run = async (client, message, args) => {
 	collector.on('end', async (msgs, reason) => {
 		if (reason == 'DONE') {
 			const embed = new Discord.MessageEmbed()
-				.setTitle('Dropdown roles!')
-				.setDescription('Click on the buttons to get the specific role or vice-versa')
-				.setColor('RANDOM')
-				.setTimestamp();
+				.setTitle('Dropdown Regiments roles Picker!')
+				.setDescription(':V1tal: **Self-Assignable Roles**')
+				.setDescription('Please select with the according options to give yourself your roles.\n:BA: **Regiment Roles**\n:uksf - United Kingdom Special Forces\n:aab: - 16th Air Assault Brigade\n:ets: - Education and Training Services\n:ifd: - 1st Infantry Forces Division\n:rmp: - Royal Military Police\n:rgg: - The Grenadier Guards\n**Notification Roles**\n:announcement: - Get notified by news related to this server and more.\n:events: - Get notified by events, related to special events will be hosted by councils, allied members and more in the future\nTo prevent abuse, all the staffs will be watching the logs.')
+				.setColor('#2de2e2')
+				.setFooter("V1tal Dropdown Roles Panel")
 			Nuggies.dropdownroles.create({ message: message, content: embed, role: dpmanager, channelID: message.channel.id })
 		}
 	});
